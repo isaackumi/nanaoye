@@ -1,6 +1,8 @@
 <?php 
 //connect to database class
-require("../settings/db_class.php");
+// require("../settings/db_class.php");
+
+require __DIR__ . "/../settings/db_class.php";
 
 // inherenting methods from connection
 class Brand extends db_connection{
@@ -152,9 +154,9 @@ class Brand extends db_connection{
 	}
 
 	//add brand to database
-	function add_Cart($product_id,$ip_add,$customer_id,$qty){
+	function add_Cart($product_id,$ip_add,$qty){
 		// insert new brand query
-		$query= "INSERT INTO cart(p_id,ip_add,c_id,qty)VALUES('$product_id', '$ip_add','$customer_id', '$qty')";
+		$query= "INSERT INTO cart(p_id,ip_add,qty)VALUES('$product_id', '$ip_add', '$qty')";
 
 
 		//return true or false

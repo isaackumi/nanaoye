@@ -1,6 +1,8 @@
 <?php
 //connect to brand_class
-require("../classes/brand_class.php");
+
+	require __DIR__ . "/../classes/brand_class.php";
+// require("");
 
 function addBrand_z($brand_name){
 
@@ -270,19 +272,23 @@ function delete_product_z($a){
 	}
 }
 
-function addCart_z($product_id,$ip_add ,$customer_id, $qty){
+function addCart_z($product_id, $qty){
 
 	//creating an instance of the brand class
 	$brand_instance = new Brand();
+	$ip_add = getIp();
 
 	//calling the method from the class
-	$call = $brand_instance->add_Cart($product_id,$ip_add, $customer_id, $qty);
+	$call = $brand_instance->add_Cart($product_id,$ip_add, $qty);
 
 	//return true
 		if($call){
-			return true;
+			// return true;
+			echo "Item added to cart";
 		}
-		return false;
+		
+
+		echo "Item already in cart";
 	
 }
 
@@ -355,6 +361,107 @@ function delete_cart_z($p_id){
 		//return false
 		return false;
 	}
+}
+
+// helps get user IP
+function getIp()    
+{
+	$ip = $_SERVER['REMOTE_ADDR'];
+
+	if(!empty($_SERVER['HTTP_CLIENT_IP']))
+	{
+		$ip = $_SERVER['HTTP_CLIENT_IP'];
+	}
+	elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) 
+	{
+		$ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+	}
+
+	return $ip;
+}
+
+
+function displayHomeProducts(){
+	$all_prod = view_all_product_z();
+
+	if ($all_prod){
+
+		foreach($all_prod as $value){
+
+			$img = $value['product_image'];
+			$id = $value['product_id'];
+			$title = $value['product_title'];
+
+			echo '<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">';
+
+		echo '<div class="shop-cat-box">';
+
+		echo ' <img class="img-fluid" src="'.$img.'" alt="" />';
+		echo '<a class="btn hvr-hover" href="./freshshop/shop-detail.php?prod_id='.$id.'">'.$title.'</a>';
+		echo '</div>';
+		echo '</div>';
+		}
+
+		
+
+		// echo <<< _Home
+		// <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        //             <div class="shop-cat-box">
+        //                 <img class="img-fluid" src="images/categories_img_01.jpg" alt="" />
+        //                 <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
+        //             </div>
+        //         </div>
+
+		// _Home;
+
+	}else{
+		echo "All prod is null";
+	}
+
+
+}
+
+
+
+
+function displayProducts(){
+	$all_prod = view_all_product_z();
+
+	if ($all_prod){
+
+		foreach($all_prod as $value){
+
+			$img = $value['product_image'];
+			$id = $value['product_id'];
+			$title = $value['product_title'];
+
+			echo '<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">';
+
+		echo '<div class="shop-cat-box">';
+
+		echo ' <img class="img-fluid" src=".'.$img.'" alt="" />';
+		echo '<a class="btn hvr-hover" href="./freshshop/shop-detail.php?prod_id='.$id.'">'.$title.'</a>';
+		echo '</div>';
+		echo '</div>';
+		}
+
+		
+
+		// echo <<< _Home
+		// <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        //             <div class="shop-cat-box">
+        //                 <img class="img-fluid" src="images/categories_img_01.jpg" alt="" />
+        //                 <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
+        //             </div>
+        //         </div>
+
+		// _Home;
+
+	}else{
+		echo "All prod is null";
+	}
+
+
 }
 
 

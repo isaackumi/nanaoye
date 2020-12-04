@@ -27,9 +27,10 @@ if(isset($_POST['login'])){
 		if (password_verify($pass, $hash)){
 
 						//set session
-				$_SESSION["customer_id"] = $check_login[0]['customer_id'];
+				$_SESSION["user_id"] = $check_login[0]['customer_id'];
 				$_SESSION["customer_role"] = $check_login[0]['user_role'];
 				$_SESSION["customer_email"] = $check_login[0]['customer_email'];
+				$_SESSION["customer_name"] = $check_login[0]['customer_name'];
 
 				
 				//create an if session to check for customer or admin
@@ -41,7 +42,7 @@ if(isset($_POST['login'])){
 				}else{
 
 					//redirect to admin page
-				header('Location: ../admin_index.php');
+				header('Location: ../index.php');
 				}
 				//ensure code below does not execute after redirection
 				exit;
