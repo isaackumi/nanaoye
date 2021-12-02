@@ -14,7 +14,10 @@ if(isset($_POST['register'])){
 	$city = $_POST ['city'];
 	$country = $_POST ['country'];
 	$pass = $_POST ['createpassword'];
+	$pass1 = $_POST ['createpassword1'];
 	$role = $_POST ['user_role'];
+
+	
 	//encrypt password
 	$hash = password_hash($pass, PASSWORD_DEFAULT);
 
@@ -39,4 +42,3 @@ $check_register = addCustomer_z($fullname, $email, $hash, $country, $city, $cont
 
 
 	}
-?>

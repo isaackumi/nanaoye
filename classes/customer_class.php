@@ -9,7 +9,7 @@ class Customer extends db_connection{
  	//adds customer to the database
 	function addCustomer($name, $email, $pass, $country, $city, $contact,$role){
 
-		$query ="insert into customer(customer_name, customer_email, customer_pass, customer_country, customer_city, customer_contact, user_role) values ('$name', '$email', '$pass', '$country', '$city', '$contact',2)";
+		$query ="insert into customer(customer_name, customer_email, customer_pass, customer_country, customer_city, customer_contact, user_role) values ('$name', '$email', '$pass', '$country', '$city', '$contact',$role)";
 
 		//return true or false
 		return $this->db_query($query);
@@ -56,6 +56,3 @@ class Customer extends db_connection{
 
 
 }
-
-
-?>

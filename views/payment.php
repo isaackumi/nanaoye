@@ -5,7 +5,7 @@
 require("../settings/core.php");
 
 //check for login in the core file
-check_login();
+// check_login();
 
 ?>
 
@@ -92,7 +92,7 @@ check_login();
     echo "</a></li>";
     
     //check permission if user id an admin or not 
-    $u_perm = check_permission();
+    // $u_perm = check_permission();
     
 
     //checking if customer details was found

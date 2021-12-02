@@ -424,6 +424,73 @@ function displayHomeProducts(){
 
 
 
+
+function displayAllProducts(){
+	$all_prod = view_all_product_z();
+
+	if ($all_prod){
+
+		foreach($all_prod as $value){
+
+			$img = $value['product_image'];
+			$id = $value['product_id'];
+			$title = $value['product_title'];
+			$price = $value['product_price'];
+
+
+			echo <<< _All
+			<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+			<div class="products-single fix">
+				<div class="box-img-hover">
+					<div class="type-lb">
+						<p class="sale">Sale</p>
+					</div>
+					<img src=".$img" class="img-fluid" alt="Image">
+					<div class="mask-icon">
+						<ul>
+							<li><a href="./shop-detail.php?prod_id=$id" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+							<li><a href="#" data-toggle="tooltip" data-placement="right" title="Compare"><i class="fas fa-sync-alt"></i></a></li>
+							<li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+						</ul>
+						<a class="cart" href="cart_mgt.php?id=$id&qty=1&type=add">Add to Cart</a>
+					</div>
+				</div>
+				<div class="why-text">
+					<h4>$title</h4>
+					<h5>GH¢ $price.00</h5>
+				</div>
+			</div>
+			</div>
+			_All;
+
+			
+		}
+
+		
+
+		// echo <<< _Home
+		// <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+        //             <div class="shop-cat-box">
+        //                 <img class="img-fluid" src="images/categories_img_01.jpg" alt="" />
+        //                 <a class="btn hvr-hover" href="#">Lorem ipsum dolor</a>
+        //             </div>
+        //         </div>
+
+		// _Home;
+
+	}else{
+		echo "All prod is null";
+	}
+
+
+}
+
+
+
+
+
+
+
 function displayProducts(){
 	$all_prod = view_all_product_z();
 

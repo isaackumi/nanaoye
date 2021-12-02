@@ -51,10 +51,6 @@ if (isset($_GET['type'])){
 
 
 // cart controllers here
-
-
-
-
 function addCart_z($product_id, $qty){
 
 	//creating an instance of the brand class
@@ -67,9 +63,12 @@ function addCart_z($product_id, $qty){
 	//return true
 		if($call){
 			// return true;
-			echo "Item added to cart";
+			// echo "Item added to cart";
+			header("Location: cart.php");
 		}else{
-            echo "Item already in cart";
+			// echo "Item already in cart";
+			header("Location: cart.php");
+			
         }
 		
 
